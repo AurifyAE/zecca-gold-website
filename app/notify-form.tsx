@@ -44,8 +44,10 @@ export default function NotifyForm() {
         setError("");
         startTransition(async () => {
           const res = await subscribe(email);
-          if (res.error) setError(res.error);
-          else setSubmitted(true);
+          if (res.error) return setError(res.error);
+          setSubmitted(true);
+          // fbq is set up by the pixel script in layout.tsx; missing if blocked by an ad blocker
+          (window as Window & { fbq?: (...args: unknown[]) => void }).fbq?.("track", "Lead");
         });
       }}
       className="mx-auto w-full max-w-md"
