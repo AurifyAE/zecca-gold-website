@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-urbanist);
+  --color-ink: #0b0b0f;
+  --color-muted: #6b6b76;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  background: #fff8f4;
+}
+
+.text-brand-gradient {
+  background: linear-gradient(90deg, #c8389b, #7b5bd6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(90deg, #e0358d, #3b3fb0);
+}
+
+/* Figma "Glass" effect: fill #FFF 10%, stroke #E7E7E7 50% inside, light -45° 80%, frost 54, depth 20 */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(231, 231, 231, 0.5);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.04),
+    inset 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.bg-footer-gradient {
+  background: linear-gradient(90deg, #db3a8f, #6b3fa0 60%, #2e3fa8);
 }
