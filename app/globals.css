@@ -22,16 +22,37 @@ body {
   background: linear-gradient(90deg, #e0358d, #3b3fb0);
 }
 
-/* Figma "Glass" effect: fill #FFF 10%, stroke #E7E7E7 50% inside, light -45° 80%, frost 54, depth 20 */
+/* Based on Figma "Glass" (light -45°, frost 54), strengthened so the edge stays visible
+   on the near-white page background */
 .glass {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(231, 231, 231, 0.5);
+  position: relative;
+  background: rgba(255, 255, 255, 0.35);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   box-shadow:
-    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
-    inset -1px -1px 0 rgba(0, 0, 0, 0.04),
-    inset 0 0 20px rgba(255, 255, 255, 0.25);
+    0 10px 30px -10px rgba(120, 60, 140, 0.28),
+    0 1px 3px rgba(120, 60, 140, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+/* Light-catching rim: bright at top-left and bottom-right, fading along the sides */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    #fff,
+    rgba(255, 255, 255, 0.35) 30%,
+    rgba(255, 255, 255, 0.15) 60%,
+    rgba(255, 255, 255, 0.9)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .bg-footer-gradient {
