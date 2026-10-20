@@ -10,7 +10,7 @@ const socials = [
   { name: "Instagram", href: "https://www.instagram.com/zecca.gold/", icon: "/icons/instagram.svg" },
   { name: "YouTube", href: "https://www.youtube.com/@ZeccaGold", icon: YoutubeIcon },
 ];
-
+ 
 export default function Home() {
   return (
     <>
